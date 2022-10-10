@@ -1,6 +1,6 @@
 FROM python:3.9-buster
 
-RUN apk update && apk install nginx vim -y --no-install-recommends
+RUN apk update && apk add nginx vim -y --no-install-recommends
 
 COPY nginx.default /etc/nginx/sites-available/default
 
