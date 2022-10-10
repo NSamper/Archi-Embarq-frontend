@@ -26,6 +26,8 @@ RUN python3 manage.py makemigrations \
     && python3 manage.py migrate \
     && python3 manage.py test > test-results.txt
 
+RUN chmod +x /start-server.sh
+
 ENV DJANGO_SUPERUSER_USERNAME admin
 ENV DJANGO_SUPERUSER_PASSWORD admin
 ENV DJANGO_SUPERUSER_EMAIL admin@example
