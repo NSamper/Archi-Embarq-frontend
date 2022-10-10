@@ -1,7 +1,7 @@
 FROM python:3.9-alpine
 
-RUN apk update && apk add nginx vim -y --no-install-recommends
-
+RUN apk update \
+    && apk add nginx vim
 COPY nginx.default /etc/nginx/sites-available/default
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -15,8 +15,7 @@ RUN mkdir -p /opt/app \
 COPY dependancies.txt start-server.sh /opt/app/
 
 RUN mkdir -p /opt/app/pip_cache/.pip_cache \
-    && pip install -r dependancies.txt --cache-dir /opt/app/pip_cache \
-    && chown -R www-data:www-data /opt/app
+    && pip install -r /opt/app/dependancies.txt --cache-dir /opt/app/pip_cache
 
 COPY src /opt/app/DjangoProject
 
