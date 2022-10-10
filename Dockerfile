@@ -14,8 +14,8 @@ RUN mkdir -p /opt/app \
 
 COPY dependancies.txt start-server.sh /opt/app/
 
-RUN mkdir -p /app/pip_cache/.pip_cache \
-    && pip install -r /app/dependancies.txt --no-cache-dir
+RUN mkdir -p /opt/app/pip_cache/.pip_cache \
+    && pip install -r /opt/app/dependancies.txt --no-cache-dir
 
 COPY src /opt/app/DjangoProject
 
