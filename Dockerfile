@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.9-alpine
 
 RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
 
@@ -15,14 +15,10 @@ RUN mkdir -p /opt/app \
 COPY dependancies.txt start-server.sh /opt/app/
 
 RUN mkdir -p /opt/app/pip_cache/.pip_cache \
-    && pip install -r /opt/app/dependancies.txt --no-cache-dir
+    && pip install -r dependancies.txt --cache-dir /opt/app/pip_cache \
+    && chown -R www-data:www-data /opt/app
 
 COPY src /opt/app/DjangoProject
-
-WORKDIR /opt/app
-
-RUN pip install -r dependancies.txt --cache-dir /opt/app/pip_cache \
-    && chown -R www-data:www-data /opt/app
 
 WORKDIR /opt/app/DjangoProject
 
