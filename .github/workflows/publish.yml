@@ -15,4 +15,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
           repository: nsamper/django-base/django-server
-          tag-with-sha: true
+          tag_with_sha: true
