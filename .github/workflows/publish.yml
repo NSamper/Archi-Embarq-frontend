@@ -14,5 +14,5 @@ jobs:
           username: NSamper
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: NSamper/Django-Base/djangobase
+          repository: nsamper/django-base
           tag_with_sha: true
