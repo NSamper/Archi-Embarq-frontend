@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.9-alpine
 
 RUN apk update && apk add nginx vim -y --no-install-recommends
 
