@@ -1,6 +1,7 @@
 #!/bin/sh
+ls -l
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
-    (cd DjangoProject; python3 manage.py createsuperuser --no-input)
+    (python3 manage.py createsuperuser --no-input)
 fi
-(cd DjangoProject; gunicorn Project.wsgi --user www-data --bind 0.0.0.0:8010 --workers 3) &
+(gunicorn Project.wsgi --user nginx --bind 0.0.0.0:8020 --workers 3) &
 nginx -g "daemon off;"

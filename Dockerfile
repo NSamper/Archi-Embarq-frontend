@@ -13,7 +13,7 @@ RUN mkdir -p /opt/app \
     && mkdir -p /opt/app/DjangoProject
 
 COPY dependancies.txt start-server.sh /opt/app/
-RUN chmod +x /opt/app/start-server.sh
+RUN chmod a+x /opt/app/start-server.sh
 
 RUN mkdir -p /opt/app/pip_cache/.pip_cache \
     && pip install -r /opt/app/dependancies.txt --cache-dir /opt/app/pip_cache \
@@ -29,7 +29,7 @@ RUN python3 manage.py makemigrations \
 
 ENV DJANGO_SUPERUSER_USERNAME admin
 ENV DJANGO_SUPERUSER_PASSWORD admin
-ENV DJANGO_SUPERUSER_EMAIL admin@example
+ENV DJANGO_SUPERUSER_EMAIL admin@example.com
 ENV APP_SECRET_KEY secret
 
 EXPOSE 8020
