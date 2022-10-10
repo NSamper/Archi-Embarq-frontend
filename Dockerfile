@@ -13,6 +13,7 @@ RUN mkdir -p /opt/app \
     && mkdir -p /opt/app/DjangoProject
 
 COPY dependancies.txt start-server.sh /opt/app/
+RUN chmod +x /opt/app/start-server.sh
 
 RUN mkdir -p /opt/app/pip_cache/.pip_cache \
     && pip install -r /opt/app/dependancies.txt --cache-dir /opt/app/pip_cache \
@@ -25,8 +26,6 @@ WORKDIR /opt/app/DjangoProject
 RUN python3 manage.py makemigrations \
     && python3 manage.py migrate \
     && python3 manage.py test > test-results.txt
-
-RUN chmod +x /start-server.sh
 
 ENV DJANGO_SUPERUSER_USERNAME admin
 ENV DJANGO_SUPERUSER_PASSWORD admin
