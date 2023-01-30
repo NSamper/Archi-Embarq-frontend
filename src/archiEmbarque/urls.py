@@ -24,4 +24,6 @@ urlpatterns = [
     path('device/', views.DeviceList.as_view(), name='deviceList'),
     path('device/<int:pk>', views.DeviceDetails.as_view(), name='deviceDetails'),
     path('digital/<int:pk>', views.Digital, name='digital'),
+    path('json/device/', views.deviceListJson, name='jsonDeviceList'),
+    path('json/device/<int:pk>', views.deviceItemJson, name='jsonDeviceDetails'),
 ]

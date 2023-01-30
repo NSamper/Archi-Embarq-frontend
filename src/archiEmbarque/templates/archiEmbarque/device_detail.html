@@ -6,4 +6,12 @@
         <input type="text" id="gpio" name="gpio" value="0">
     <button type="submit">Read</button>
     </form>
+        <form action="/front/{{ device.getDigitalGetUrl }}" method="POST">
+        {% csrf_token %}
+            <label for="gpio">Set state from GPIO : </label>
+            <input type="text" id="gpio" name="gpio" value="0">
+            <label for="value">Value : </label>
+            <input type="text" id="value" name="value" value="0">
+    <button type="submit">Set</button>
+    </form>
 {% endblock %}
