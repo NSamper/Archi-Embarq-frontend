@@ -1,0 +1,14 @@
+{% block content %}
+  <h1>Devices reachable</h1>
+  {% if device_list %}
+  <ul>
+    {% for device in device_list %}
+      <li>
+        {{ device.id }} : <a href="{{ device.get_absolute_url }}">{{ device.name }}</a> at ({{device.ip}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No device known and/or reachable</p>
+  {% endif %}
+{% endblock %}

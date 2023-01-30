@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from django.views.generic import RedirectView
 
+from archiEmbarque import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='front/', permanent=True)),
-    path('front/', include('archiEmbarque.urls'), name='front'),
+    path('', RedirectView.as_view(url='device/', permanent=True)),
+    path('device/', views.DeviceList.as_view(), name='deviceList'),
+    path('device/<int:pk>', views.DeviceDetails.as_view(), name='deviceDetails'),
+    path('digital/<int:pk>', views.Digital, name='digital'),
 ]

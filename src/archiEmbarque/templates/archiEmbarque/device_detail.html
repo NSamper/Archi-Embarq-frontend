@@ -1,0 +1,9 @@
+{% block content %}
+  <h1>Name: {{ device.name }}</h1>
+    <p>Ip : {{ device.ip }}</p>
+    <form action="/front/{{ device.getDigitalGetUrl }}" method="get">
+<label for="gpio">Read value from GPIO : </label>
+        <input type="text" id="gpio" name="gpio" value="0">
+    <button type="submit">Read</button>
+    </form>
+{% endblock %}
